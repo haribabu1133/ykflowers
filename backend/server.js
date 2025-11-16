@@ -1,18 +1,15 @@
-import path from "path";
-import { fileURLToPath } from "url";
 import express from "express";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 const app = express();
 const PORT = process.env.PORT || 10000;
 
-// Serve frontend build folder
-app.use(express.static(path.join(__dirname, "frontend/dist")));
+app.use(express.json());
 
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "frontend/dist/index.html"));
+// API routes (add your routes here)
+
+// Root route
+app.get("/", (req, res) => {
+  res.send("Backend API is running...");
 });
 
 app.listen(PORT, () => {
