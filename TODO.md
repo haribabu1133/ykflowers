@@ -1,9 +1,9 @@
-# TODO: Push all files to new GitHub repository 'flowers'
+# TODO: Restructure project to Vite-based frontend
 
-- [x] Create new public GitHub repository named 'flowers' via browser
-- [x] Set local git remote to https://github.com/haribabu1133/flowers.git (remove existing if any)
-- [x] Rename current branch to 'main'
-- [x] Add all files to git
-- [x] Commit with message "Reorganize project into frontend and backend folders"
-- [x] Push to origin main
-- [x] Verify push success
+- [ ] Create frontend/public/ folder and move index.html there
+- [ ] Create frontend/src/ folder and move script.js there
+- [ ] Move styles.css, navbar.css, cart-styles.css to frontend/src/
+- [ ] Create frontend/vite.config.js
+- [ ] Update frontend/package.json for Vite
+- [ ] Update backend/server.js to serve frontend/dist
+- [ ] Commit and push changes
