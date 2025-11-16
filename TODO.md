@@ -1,4 +1,9 @@
-# TODO List for Fixing Deployment Error
+# TODO: Push all files to new GitHub repository 'flowers'
 
-- [x] Update static middleware in server.js to serve files from parent directory
-- [x] Update root route in server.js to serve index.html from parent directory
+- [ ] Create new public GitHub repository named 'flowers' via browser
+- [ ] Set local git remote to https://github.com/haribabu1133/flowers.git (remove existing if any)
+- [ ] Rename current branch to 'main'
+- [ ] Add all files to git
+- [ ] Commit with message "initial commit"
+- [ ] Push to origin main
+- [ ] Verify push success
