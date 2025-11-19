@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>YK Flora</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>YK Flora</h1>
+  </header>
+
+  <main id="app">
+    <p>Site deployed — use your frontend pages and scripts in /frontend/src/</p>
+
+    <!-- Example product to test add-to-cart -->
+    <div class="flower-card">
+      <h3>Sample Flower</h3>
+      <p>Beautiful sample</p>
+      <button onclick="cartFunctions.addToCart('Sample Flower', 100)">Add to cart</button>
+    </div>
+
+    <button onclick="document.getElementById('cart-modal').style.display='block'">Open Cart</button>
+  </main>
+
+  <!-- load your frontend script (adjust path if your build outputs elsewhere) -->
+  <script type="module" src="frontend/src/script.js"></script>
+</body>
+</html>
