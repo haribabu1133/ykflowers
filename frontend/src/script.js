@@ -131,48 +131,30 @@ document.addEventListener('DOMContentLoaded', async function() {
             };
 
             try {
-                const response = await fetch('https://ykflowers.onrender.com/api/orders', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(orderData),
-                });
+                const response = await fetch('/api/orders', {
+                     method: 'POST',
+                     headers: {
+                         'Content-Type': 'application/json',
+                     },
+                     body: JSON.stringify(orderData),
+                 });
 
                 if (response.ok) {
                     const result = await response.json();
-
-                    // Also send to Google Sheets using the form's data
-                    const sheetsFormData = new FormData(this);
-                    sheetsFormData.append('cart', JSON.stringify(orderData.cart));
-                    sheetsFormData.append('total', orderData.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0));
-
-                    try {
-                        const sheetsResponse = await fetch('https://script.google.com/macros/s/AKfycbzPCR3jJP9uMCkyyzDk1TSpRN8YffDeFi_ByfwxUChIkoOGGTm6vLj0rpIgcnV6-YQ/exec', {
-                            method: 'POST',
-                            body: sheetsFormData
-                        });
-
-                        if (!sheetsResponse.ok) {
-                            console.error('Google Sheets submission failed:', sheetsResponse.status);
-                        }
-                    } catch (sheetsError) {
-                        console.error('Error submitting to Google Sheets:', sheetsError);
-                    }
-
-                    alert(`Order placed successfully! Order ID: ${result.orderId}`);
-                    cartFunctions.cart = []; // Clear the cart
+                    // clear cart after successful order
+                    cartFunctions.cart = [];
                     cartFunctions.saveCart();
                     cartFunctions.updateCartDisplay();
+                    alert('Order placed successfully. Order ID: ' + (result.orderId || 'N/A'));
                     this.reset();
                 } else {
-                    const error = await response.json();
-                    alert(`Error placing order: ${error.error}`);
+                    const errText = await response.text();
+                    alert('Failed to place order: ' + (errText || response.status));
                 }
-            } catch (error) {
-                console.error('Error placing order:', error);
-                alert('Error placing order. Please try again.');
-            }
+             } catch (error) {
+                 console.error('Error placing order:', error);
+                 alert('Error placing order. Please try again.');
+             }
         });
     }
 
